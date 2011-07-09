@@ -1,0 +1,16 @@
+listview<br />
+<% @entries.sort.each do |e| %>
+  <% if e != '.' && e != '..' && File.directory?(@path + e) %>
+    <a href="/list/<%= e %>"><%= e %></a>
+    <br />
+  <% end %>
+  <% if e != '.' && e != '..' && File.file?(@path + e) %>
+    <a class="play" href="/play<%= @path + e %>" data-name="<%= e %>"><%= e %></a>
+    <br />
+  <% end %>
+<% end %>
+<div id="player">
+  <div id="now_playing"></div>
+  <div id="pause">pause</div>
+  <div id="timer"></div>
+</div>
